@@ -4,6 +4,8 @@ const peopleController = require('../controller/people');
 
 const router = express.Router();
 
-router.get('/people/login', peopleController.getLogin);
+router.get('/login', peopleController.getLogin);
+
+router.get('/dashboard', peopleController.getDashboard);
 
 module.exports = router;

@@ -9,3 +9,7 @@ exports.getLogin = (req, res) => {
         pageTitle: 'Login Page'
     });
 };
+
+exports.getDashboard = (req, res) => {
+    res.render('people/dashboard');
+};

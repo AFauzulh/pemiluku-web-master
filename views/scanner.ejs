@@ -2,15 +2,65 @@
 <html>
 
 <head>
-    <title>Instascan</title>
+    <title>Validator</title>
+
+    <!-- // PLUGINS (css files) // -->
+
+    <link href="/assets/js/plugins/bootsnav_files/skins/color.css" rel="stylesheet">
+
+    <link href="/assets/js/plugins/bootsnav_files/css/animate.css" rel="stylesheet">
+
+    <link href="/assets/js/plugins/bootsnav_files/css/bootsnav.css" rel="stylesheet">
+
+    <link href="/assets/js/plugins/bootsnav_files/css/overwrite.css" rel="stylesheet">
+
+    <link href="/assets/js/plugins/owl-carousel/owl.carousel.css" rel="stylesheet">
+
+    <link href="/assets/js/plugins/owl-carousel/owl.theme.css" rel="stylesheet">
+
+    <link href="/assets/js/plugins/owl-carousel/owl.transitions.css" rel="stylesheet">
+
+    <link href="/assets/js/plugins/Magnific-Popup-master/Magnific-Popup-master/dist/magnific-popup.css"
+        rel="stylesheet">
+
+    <!--// ICONS //-->
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--// BOOTSTRAP & Main //-->
+
+    <link href="/assets/bootstrap-3.3.7/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/assets/css/main.css" rel="stylesheet">
+
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <link rel="stylesheet" href="/css/semantic.css">
+
+    <style>
+        video {
+            position: absolute;
+            top: 0;
+            width: 350px;
+            height: 350px;
+        }
+    </style>
 </head>
 
 <body>
-    <video id="preview"></video>
+
+    <div class="ui container">
+        <div class="ui centered card">
+            <video id="preview"></video>
+        </div>
+    </div>
+
+    <script src="/js/semantic.js"></script>
     <script type="text/javascript">
         let scanner = new Instascan.Scanner({
             video: document.getElementById('preview')
