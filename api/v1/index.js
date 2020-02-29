@@ -1,13 +1,14 @@
 const sequelize = require('../../util/database');
 
-const People = require('../../model/people');
+const Student = require('../../model/student');
 
 exports.postInvertStatus = async (req, res) => {
-    const people = await People.findByPk(req.body.nik);
-    if (people) {
-        people.isAlreadyChose = !people.isAlreadyChose;
+    const student = await Student.findByPk(req.body.nik);
+
+    if (student) {
+        student.isAlreadyChose = !student.isAlreadyChose;
         try {
-            const inverted = await people.save();
+            const inverted = await student.save();
             return res.send({
                 status: 200
             });
@@ -23,25 +24,24 @@ exports.postInvertStatus = async (req, res) => {
     }
 };
 
-exports.registerToTps = async (req, res) => {
+exports.registerToken = async (req, res) => {
     const token = Math.random().toString(36).substring(2, 4) + Math.random().toString(36).substring(2, 5);
-    const people = await People.findByPk(req.body.nik);
-    if (people) {
-        if (people.isAlreadyChose) {
+    const student = await Student.findByPk(req.body.nim);
+
+    if (student) {
+        if (student.isAlreadyChose) {
             return res.status(500).send('Anda Telah Memilih !');
         } else {
-            if (people.tpId && people.token) {
-                people.tpId = people.tpId;
-                people.token = people.token;
+            if (student.token) {
+                student.token = student.token;
             } else {
-                people.tpId = 131;
-                people.token = token;
+                student.token = token;
             }
             try {
-                const inverted = await people.save();
+                const inverted = await student.save();
                 return res.send({
                     status: 200,
-                    token: people.token
+                    token: student.token
                 });
             } catch (error) {
                 console.log(error);

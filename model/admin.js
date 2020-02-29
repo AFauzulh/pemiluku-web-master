@@ -3,8 +3,8 @@ const Sequelize = require('sequelize');
 const sequelize = require('../util/database');
 
 const Admin = sequelize.define('Admin', {
-    NIK: {
-        type: Sequelize.CHAR(16),
+    NIM: {
+        type: Sequelize.CHAR(15),
         allowNull: false,
         primaryKey: true
     },

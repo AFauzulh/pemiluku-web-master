@@ -13,12 +13,12 @@ app.set('views', 'views');
 const sequelize = require('./util/database');
 const Candidate = require('./model/candidate');
 const CandidatePair = require('./model/candidatePair');
-const People = require('./model/people');
-const Tps = require('./model/tps');
+const Student = require('./model/student');
+const Jurusan = require('./model/jurusan');
 const Admin = require('./model/admin');
 
 const indexRoutes = require('./routes/index');
-const peopleRoutes = require('./routes/people');
+const studentRoutes = require('./routes/student');
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -29,15 +29,21 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(indexRoutes);
-app.use('/people', peopleRoutes)
+app.use('/student', studentRoutes)
 
 // Define database relationship
-Tps.hasMany(People);
-People.belongsTo(Tps);
-CandidatePair.hasMany(People);
+
+// Jurusan memiliki banyak mahasiswa
+Jurusan.hasMany(Student);
+
+// Paslon terdiri dari 2 calon
 CandidatePair.hasMany(Candidate);
-Candidate.belongsTo(CandidatePair);
-Admin.hasOne(Tps);
+
+// Paslon dipilih oleh banyak mahasiswa
+CandidatePair.hasMany(Student);
+
+// 1 Himpunan Jurusan hanya memiliki 1 admin
+Admin.hasOne(Jurusan);
 
 sequelize
     .sync({

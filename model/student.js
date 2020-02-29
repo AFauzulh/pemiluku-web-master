@@ -2,17 +2,13 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../util/database');
 
-const People = sequelize.define('people', {
-    NIK: {
+const Student = sequelize.define('Student', {
+    NIM: {
         type: Sequelize.CHAR(16),
         allowNull: false,
         primaryKey: true
     },
     name: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    address: {
         type: Sequelize.STRING,
         allowNull: false
     },
@@ -27,4 +23,4 @@ const People = sequelize.define('people', {
     }
 });
 
-module.exports = People;
+module.exports = Student;

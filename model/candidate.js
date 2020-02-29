@@ -3,9 +3,9 @@ const Sequelize = require('sequelize');
 const sequelize = require('../util/database');
 
 
-const Candidate = sequelize.define('candidate', {
-    NIK: {
-        type: Sequelize.CHAR(16),
+const Candidate = sequelize.define('Candidate', {
+    NIM: {
+        type: Sequelize.CHAR(15),
         allowNull: false,
         primaryKey: true
     },

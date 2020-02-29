@@ -2,20 +2,18 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../util/database');
 
-const Tps = sequelize.define('tps', {
+const Jurusan = sequelize.define('Jurusan', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false
     },
-    location: {
+    namaJurusan: {
         type: Sequelize.STRING,
         allowNull: false
-    },
-    number: {
-        type: Sequelize.INTEGER,
-        allowNull: false
     }
+}, {
+    tableName: 'Jurusan'
 });
 
-module.exports = Tps;
+module.exports = Jurusan;

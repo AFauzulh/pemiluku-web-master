@@ -69,15 +69,15 @@
         scanner.addListener('scan', function (content) {
             $.ajax({
                 type: 'POST',
-                url: 'http://localhost:3000/registerTps',
+                url: 'http://localhost:3000/registerToken',
                 data: {
-                    nik: content
+                    nim: content
                 },
                 success: (response) => {
                     switch (response.status) {
                         case 200:
                             Swal.fire('Registrasi Berhasil',
-                                `NIK : ${content} <br> <h2>Kode Token Anda : ${response.token}</h2`,
+                                `NIM : ${content} <br> <h2>Kode Token Anda : ${response.token}</h2`,
                                 'success');
                             break;
                         default:

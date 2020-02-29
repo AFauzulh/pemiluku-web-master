@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 const sequelize = require('../util/database');
 
 
-const CandidatePair = sequelize.define('candidatePair', {
+const CandidatePair = sequelize.define('CandidatePair', {
     no_cp: {
         type: Sequelize.INTEGER,
         allowNull: false,
