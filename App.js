@@ -10,8 +10,6 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
-
-
 const sequelize = require('./util/database');
 const Candidate = require('./model/candidate');
 const CandidatePair = require('./model/candidatePair');
@@ -20,6 +18,7 @@ const Tps = require('./model/tps');
 const Admin = require('./model/admin');
 
 const indexRoutes = require('./routes/index');
+const peopleRoutes = require('./routes/people');
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -30,6 +29,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(indexRoutes);
+app.use(peopleRoutes)
 
 // Define database relationship
 Tps.hasMany(People);

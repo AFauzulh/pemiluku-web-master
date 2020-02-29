@@ -18,25 +18,29 @@
 
         scanner.addListener('scan', function (content) {
             $.ajax({
-                    type: 'POST',
-                    url: 'http://localhost:3000/registerTps',
-                    data: {
-                        nik: content
-                    },
-                })
-                .done(data => {
-                    Swal.fire('Registrasi Berhasil',
-                        `NIK : ${content} <br> <h2>Token Anda : ${data.token}</h2`,
-                        'success')
-                })
-                .fail(data => {
-                    console.log(data)
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'ERROR!',
-                        text: data.responseText,
-                    })
-                })
+                type: 'POST',
+                url: 'http://localhost:3000/registerTps',
+                data: {
+                    nik: content
+                },
+                success: (response) => {
+                    switch (response.status) {
+                        case 200:
+                            Swal.fire('Registrasi Berhasil',
+                                `NIK : ${content} <br> <h2>Kode Token Anda : ${response.token}</h2`,
+                                'success');
+                            break;
+                        default:
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'ERROR!',
+                                text: response.message,
+                            });
+                            break;
+                    }
+                }
+
+            })
         });
 
         Instascan.Camera.getCameras().then(function (cameras) {
