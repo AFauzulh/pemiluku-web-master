@@ -16,6 +16,8 @@ const CandidatePair = require('./model/candidatePair');
 const Student = require('./model/student');
 const Jurusan = require('./model/jurusan');
 const Admin = require('./model/admin');
+const Visi = require('./model/visi');
+const Misi = require('./model/misi');
 
 const indexRoutes = require('./routes/index');
 const studentRoutes = require('./routes/student');
@@ -42,12 +44,18 @@ CandidatePair.hasMany(Candidate);
 // Paslon dipilih oleh banyak mahasiswa
 CandidatePair.hasMany(Student);
 
+// 1 Paslon hanya memiliki 1 Visi
+CandidatePair.hasOne(Visi);
+
+// 1 Paslon bisa memiliki banyak Misi
+CandidatePair.hasMany(Misi);
+
 // 1 Himpunan Jurusan hanya memiliki 1 admin
 Admin.hasOne(Jurusan);
 
 sequelize
     .sync({
-        force: false
+        force: true
     })
     .then(result => {
         app.listen(PORT, () => {
