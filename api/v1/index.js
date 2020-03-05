@@ -47,14 +47,32 @@ exports.registerToken = async (req, res) => {
                 console.log(error);
                 return res.send({
                     status: 500,
-                    message: 'Gagal !'
+                    message: 'Database Error !'
                 });
             }
         }
     } else {
         return res.send({
             status: 404,
-            message: 'NIK anda tidak terdaftar'
+            message: 'NIM anda tidak terdaftar'
+        });
+    }
+};
+
+exports.getPaslonData = async (req, res) => {
+    try {
+        const cp = await sequelize.query(
+            'SELECT * FROM candidatepairs INNER JOIN candidates ON (candidatepairs.no_cp = candidates.CandidatePairNoCp)', {
+                type: sequelize.QueryTypes.SELECT
+            }
+        );
+        res.status(200).json({
+            paslon: cp
+        });
+    } catch (error) {
+        console.log(err);
+        res.status(500).json({
+            message: 'Error'
         });
     }
 };

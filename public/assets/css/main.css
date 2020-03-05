@@ -482,19 +482,19 @@ nav.navbar.bootsnav.navbar-fixed .button-holder {
 
 #home {
   position: relative;
-  padding: 190px 0px 120px 0px;
-  background: url(../img/monas1.jpg);
+  padding: 150px 0px 120px 0px;
+  background: url(../img/bg.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat; }
   #home .caption {
     padding: 60px 0; }
     #home .caption h2 {
-      color:#496174; }
+      color:#fff; }
     #home .caption p {
       font-size: 18px;
       margin-top: 25px;
-      color: #496174; }
+      color: #fff; }
     #home .caption .btn {
       margin-top: 25px; }
     #home .caption .btn-blue {

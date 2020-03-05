@@ -8,6 +8,8 @@ const router = express.Router();
 
 router.get('/scanner', indexController.getScanner);
 
+router.get('/paslonData', API.getPaslonData);
+
 router.post('/invert_status', API.postInvertStatus);
 
 router.post('/registerToken', API.registerToken);

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Landing PAGE Html5 Template">
+
+    <meta name="keywords" content="landing,startup,flat">
+
+    <meta name="author" content="Made By GN DESIGNS">
+
+
+
+    <title>PEMILU - INDONESIA</title>
+
+
+
+    <!-- // PLUGINS (css files) // -->
+
+    <link href="/assets/js/plugins/bootsnav_files/skins/color.css" rel="stylesheet">
+
+    <link href="/assets/js/plugins/bootsnav_files/css/animate.css" rel="stylesheet">
+
+    <link href="/assets/js/plugins/bootsnav_files/css/bootsnav.css" rel="stylesheet">
+
+    <link href="/assets/js/plugins/bootsnav_files/css/overwrite.css" rel="stylesheet">
+
+    <link href="/assets/js/plugins/owl-carousel/owl.carousel.css" rel="stylesheet">
+
+    <link href="/assets/js/plugins/owl-carousel/owl.theme.css" rel="stylesheet">
+
+    <link href="/assets/js/plugins/owl-carousel/owl.transitions.css" rel="stylesheet">
+
+    <link href="/assets/js/plugins/Magnific-Popup-master/Magnific-Popup-master/dist/magnific-popup.css"
+        rel="stylesheet">
+
+    <!--// ICONS //-->
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--// BOOTSTRAP & Main //-->
+
+    <link href="/assets/bootstrap-3.3.7/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/assets/css/main.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/semantic.css">
+</head>
+
+<body>
+
+    <div class="page-preloader">
+
+        <div class="spinner">
+
+            <div class="rect1"></div>
+
+            <div class="rect2"></div>
+
+            <div class="rect3"></div>
+
+            <div class="rect4"></div>
+
+            <div class="rect5"></div>
+
+        </div>
+
+    </div>
+
+    <nav class="navbar navbar-default navbar-fixed white no-background bootsnav navbar-scrollspy"
+        data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+
+        <div class="container">
+
+            <!-- Start Header Navigation -->
+
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+
+                    <i class="fa fa-bars"></i>
+
+                </button>
+
+                <a class="navbar-brand" href="#brand">
+                    <div class="row">
+                        <img src="/assets/img/hmif.png" class="logo" alt="logo">
+                        <img style="margin-left: 10px;" src="/assets/img/tif.png" width=1000px class="logo2" alt="logo">
+                    </div>
+                </a>
+
+            </div>
+
+            <!-- End Header Navigation -->
+
+        </div>
+
+    </nav>
+
+    <!--//** Banner**//-->
+
+    <section id="home">
+
+        <div class="ui container">
+
+            <div class="row">
+
+                <div id="particles-js"></div>
+
+                <!-- Introduction -->
+
+                <!-- Sign Up -->
+
+                <div class="ui column centered grid">
+                    <div class="six wide column">
+                        <% if(error) { %>
+                        <div class="alert alert-danger text-center" role="alert">
+                            <%= message; %>
+                        </div>
+                        <% } %>
+
+                        <form class="signup-form" method="POST" action="/admin/postLoginAdmin">
+
+                            <h2 class="text-center">Login Admin</h2>
+
+                            <hr>
+
+                            <div class="form-group">
+
+                                <input type="text" name="nim" class="form-control" placeholder="NIM"
+                                    required="required">
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <input type="password" name="password" class="form-control" placeholder="Password"
+                                    required="required">
+
+                            </div>
+
+                            <div class="form-group text-center">
+
+                                <button type="submit" class="btn btn-blue btn-block">Login</button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!--======================================== 
+
+           Contact
+
+    ========================================-->
+
+
+
+    <div id="contact" class="section-padding">
+
+        <div class="container">
+
+            <h2>Contact Us</h2>
+
+        </div>
+
+        <!-- Contact Info -->
+
+        <div class="container contact-info">
+
+            <div class="row">
+
+                <div class="col-md-4">
+
+                    <div class="icon-box">
+
+                        <i class="material-icons">place</i>
+
+                        <h4>Address</h4>
+
+                        <p>PABox 13592, Lorem Street Ipsum Dolor, Victoria 8007, USA</p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="icon-box">
+
+                        <i class="material-icons">phone</i>
+
+                        <h4>Call Us On</h4>
+
+                        <p>1-834-527-6940</p>
+
+                        <p>1-834-527-6940</p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="icon-box">
+
+                        <i class="material-icons">email</i>
+
+                        <h4>Email us on</h4>
+
+                        <p>lorem@xyz.com</p>
+
+                        <p>lorem@xyz.com</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <%- include('../includes/footer.ejs') %>

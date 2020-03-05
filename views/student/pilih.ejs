@@ -1,0 +1,44 @@
+<%- include('../includes/header.ejs') %>
+
+<!--//** Banner**//-->
+<section id="home">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div id="particles-js"></div>
+
+            <!-- Kotak -->
+
+            <% for(let cp of calon) { %>
+            <div class="col-md-5 col-md-offset-1">
+
+                <form class="signup-form text-center" action="/student/pilih" method="POST">
+
+                    <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar3.png"
+                        alt="Card image" style="width:250px; margin-bottom: 20px;">
+
+                    <div class="form-group text-center">
+
+                        <input type="hidden" name="noPaslon" value="<%= cp.no_cp %>">
+
+                        <button type="submit" class="btn btn-blue btn-block"
+                            style="margin-bottom: 10px;"><%= cp.name %></button>
+
+                        <button type="submit" class="btn btn-blue btn-block">Visi Misi</button>
+
+                    </div>
+
+                </form>
+
+            </div>
+            <% } %>
+
+        </div>
+
+    </div>
+
+</section>
+
+<%- include('../includes/footer.ejs') %>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Landing PAGE Html5 Template">
+
+    <meta name="keywords" content="landing,startup,flat">
+
+    <meta name="author" content="Made By GN DESIGNS">
+
+
+
+    <title>PEMILU - INDONESIA</title>
+
+
+
+    <!-- // PLUGINS (css files) // -->
+
+    <link href="/assets/js/plugins/bootsnav_files/skins/color.css" rel="stylesheet">
+
+    <link href="/assets/js/plugins/bootsnav_files/css/animate.css" rel="stylesheet">
+
+    <link href="/assets/js/plugins/bootsnav_files/css/bootsnav.css" rel="stylesheet">
+
+    <link href="/assets/js/plugins/bootsnav_files/css/overwrite.css" rel="stylesheet">
+
+    <link href="/assets/js/plugins/owl-carousel/owl.carousel.css" rel="stylesheet">
+
+    <link href="/assets/js/plugins/owl-carousel/owl.theme.css" rel="stylesheet">
+
+    <link href="/assets/js/plugins/owl-carousel/owl.transitions.css" rel="stylesheet">
+
+    <link href="/assets/js/plugins/Magnific-Popup-master/Magnific-Popup-master/dist/magnific-popup.css"
+        rel="stylesheet">
+
+    <!--// ICONS //-->
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--// BOOTSTRAP & Main //-->
+
+    <link href="/assets/bootstrap-3.3.7/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/assets/css/main.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/semantic.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- <script src="/socket.io/socket.io.js"></script> -->
+
+    <script type="text/javascript">
+        $(window).on('load', function () {
+            $.ajax({
+                url: 'http://localhost:3000/paslonData',
+                type: 'GET',
+                contentType: 'JSON',
+                success: (data) => {
+                    setChart(data.paslon)
+                }
+            });
+        });
+
+        function setChart(dataPaslon) {
+            console.log('ok')
+            let myChart = document.getElementById('myChart').getContext('2d');
+
+            Chart.defaults.global.defaultFontFamily = 'Lato';
+            Chart.defaults.global.defaultFontSize = 18;
+            Chart.defaults.global.defaultFontColor = '#777';
+
+            myChart.canvas.width = 100;
+            myChart.canvas.height = 100;
+
+            let massPopChart = new Chart(myChart, {
+                type: 'pie', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                responsive: true,
+                data: {
+                    labels: [dataPaslon[0].name, dataPaslon[1].name],
+                    datasets: [{
+                        label: 'Population',
+                        data: [
+                            dataPaslon[0].count,
+                            dataPaslon[1].count,
+                        ],
+                        //backgroundColor:'green',
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.6)',
+                            'rgba(54, 162, 235, 0.6)'
+                        ],
+                        borderWidth: 1,
+                        borderColor: '#777',
+                        hoverBorderWidth: 3,
+                        hoverBorderColor: '#000'
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Grafik Pemilihan Ketua Himpunan Teknik Informatika 2021',
+                        fontSize: 25
+                    },
+                    legend: {
+                        display: true,
+                        position: 'right',
+                        labels: {
+                            fontColor: '#000'
+                        }
+                    },
+                    layout: {
+                        padding: {
+                            left: 50,
+                            right: 0,
+                            bottom: 0,
+                            top: 0
+                        }
+                    },
+                    tooltips: {
+                        enabled: true
+                    }
+                }
+            });
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <div class="page-preloader">
+
+        <div class="spinner">
+
+            <div class="rect1"></div>
+
+            <div class="rect2"></div>
+
+            <div class="rect3"></div>
+
+            <div class="rect4"></div>
+
+            <div class="rect5"></div>
+
+        </div>
+
+    </div>
+
+    <nav class="navbar navbar-default navbar-fixed white no-background bootsnav navbar-scrollspy"
+        data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+
+        <div class="container">
+
+            <!-- Start Header Navigation -->
+
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+
+                    <i class="fa fa-bars"></i>
+
+                </button>
+
+                <a class="navbar-brand" href="#brand">
+                    <div class="row">
+                        <img src="/assets/img/hmif.png" class="logo" alt="logo">
+                        <img style="margin-left: 10px;" src="/assets/img/tif.png" width=1000px class="logo2" alt="logo">
+                    </div>
+                </a>
+
+            </div>
+
+            <!-- End Header Navigation -->
+
+
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+
+            <div class="collapse navbar-collapse" id="navbar-menu">
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li><a href="/admin/dashboard">Beranda</a></li>
+
+                    <li><a href="#informasi">Register Calon</a></li>
+
+                    <li><a href="/scanner">QR Scanner</a></li>
+
+                    <li><a href="/admin/chart">Grafik</a></li>
+
+                    <li><a href="/admin/postLogoutAdmin">Logout</a></li>
+
+                </ul>
+
+            </div>
+
+            <!-- /.navbar-collapse -->
+
+        </div>
+
+    </nav>
+
+    <section id="home">
+        <div class="ui column centered grid">
+            <div class="six wide column">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <%- include('../includes/footer.ejs') %>
