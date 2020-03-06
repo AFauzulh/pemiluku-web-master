@@ -11,9 +11,19 @@
 
             <!-- Kotak 1 -->
 
-            <div class="col-md-5 col-md-offset-3">
+            <div class="col-md-6 col-md-offset-3">
 
                 <form class="signup-form text-center">
+
+                    <div class="form-group text-center">
+                        <% if(error) { %>
+                        <div class="alert alert-danger" role="alert">
+                            <%= message %>
+                        </div>
+                        <% } %>
+                        <h5>Hai <%= student.name %>, Selamat Datang di pemilihan Ketua Himpunan <%= student.jurusan %>
+                            <%= new Date().getFullYear() %></h5>
+                    </div>
 
                     <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar3.png"
                         alt="Card image" style="width:275px; margin-bottom: 20px;">

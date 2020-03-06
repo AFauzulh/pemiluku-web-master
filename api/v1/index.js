@@ -61,16 +61,16 @@ exports.registerToken = async (req, res) => {
 
 exports.getPaslonData = async (req, res) => {
     try {
-        const cp = await sequelize.query(
-            'SELECT * FROM candidatepairs INNER JOIN candidates ON (candidatepairs.no_cp = candidates.CandidatePairNoCp)', {
+        const candidates = await sequelize.query(
+            'SELECT * FROM candidates', {
                 type: sequelize.QueryTypes.SELECT
             }
         );
         res.status(200).json({
-            paslon: cp
+            paslon: candidates
         });
     } catch (error) {
-        console.log(err);
+        console.log(error);
         res.status(500).json({
             message: 'Error'
         });

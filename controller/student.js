@@ -4,7 +4,7 @@ const sequelize = require('../util/database');
 
 const Student = require('../model/student');
 
-const CandidatePair = require('../model/candidatePair');
+const Candidate = require('../model/candidate');
 
 exports.getLogin = async (req, res) => {
     res.render('student/login', {
@@ -16,7 +16,11 @@ exports.getDashboard = async (req, res) => {
     if (!req.session.studentLoggedIn) {
         res.redirect('/student/login');
     } else {
-        res.render('student/dashboard');
+        res.render('student/dashboard', {
+            student: req.session.student,
+            error: false,
+            message: false,
+        });
     }
 };
 
@@ -26,22 +30,50 @@ exports.getPilih = async (req, res) => {
     }
     try {
         if (req.session.student.isAlreadyChose) {
-            res.redirect('/student/dashboard');
+            res.render('student/dashboard', {
+                student: req.session.student,
+                error: true,
+                message: 'Anda Telah Memilih',
+            });
         }
-        const candidatePair = await sequelize.query(
-            'SELECT * FROM candidatepairs INNER JOIN candidates ON (candidatepairs.no_cp = candidates.CandidatePairNoCp)', {
+        const candidates = await sequelize.query(
+            'SELECT * FROM candidates ORDER BY no_paslon ASC', {
                 type: sequelize.QueryTypes.SELECT
             });
-        console.log(candidatePair);
+
+        const visi = await sequelize.query('SELECT * FROM visi', {
+            type: sequelize.QueryTypes.SELECT
+        });
+
+        const misi = await sequelize.query('SELECT * FROM misi', {
+            type: sequelize.QueryTypes.SELECT
+        });
+
+        let i = 0;
+
+        candidates.map((c) => {
+            c.visi = visi[i].visi
+            c.misi = [];
+            i++;
+        });
+
+        for (let j = 0; j < i; j++) {
+            misi.map((m) => {
+                if (candidates[j].NIM === m.CandidateNIM) {
+                    candidates[j].misi.push(m.misi);
+                }
+            })
+        }
+
         res.render('student/pilih', {
-            calon: candidatePair
+            calon: candidates
         });
     } catch (error) {
         console.log(error);
     }
 };
 
-exports.postLogin = (req, res) => {
+exports.postLogin = async (req, res) => {
     const {
         nama,
         nim,
@@ -55,12 +87,21 @@ exports.postLogin = (req, res) => {
                 token: token
             }
         })
-        .then(student => {
+        .then(async (student) => {
             if (student) {
-                console.log(student);
+                const jurusan = await sequelize.query(`SELECT * FROM jurusan WHERE id=${student.JurusanId}`, {
+                    type: sequelize.QueryTypes.SELECT
+                });
+
+                student.jurusan = jurusan[0].namaJurusan;
+
                 req.session.studentLoggedIn = true;
                 req.session.student = student;
-                res.redirect('/student/dashboard');
+                res.render('student/dashboard', {
+                    student: req.session.student,
+                    error: false,
+                    message: false,
+                });
             } else {
                 res.render('student/login', {
                     message: 'NIM atau Kode Token Salah !',
@@ -104,14 +145,20 @@ exports.postPilihan = async (req, res) => {
     } else {
         if (req.session.student.isAlreadyChose) {
             res.render('student/dashboard', {
+                student: req.session.student,
                 error: false,
                 message: 'Anda Telah Memilih',
             });
         } else {
             try {
-                const candidatePair = await CandidatePair.findByPk(req.body.noPaslon);
-                candidatePair.count = candidatePair.count + 1;
-                const updatedCount = await candidatePair.save();
+                const candidate = await Candidate.findOne({
+                    where: {
+                        no_paslon: req.body.noPaslon
+                    }
+                });
+
+                candidate.count = candidate.count + 1;
+                const updatedCount = await candidate.save();
 
                 const student = await Student.findByPk(req.session.student.NIM);
 
@@ -120,7 +167,11 @@ exports.postPilihan = async (req, res) => {
 
                 req.session.student = student;
 
-                res.redirect('/student/dashboard');
+                res.render('student/dashboard', {
+                    student: req.session.student,
+                    error: false,
+                    message: 'Anda Telah Memilih',
+                });
             } catch (error) {
                 console.log(error);
             }

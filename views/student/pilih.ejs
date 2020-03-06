@@ -16,18 +16,18 @@
 
                 <form class="signup-form text-center" action="/student/pilih" method="POST">
 
-                    <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar3.png"
-                        alt="Card image" style="width:250px; margin-bottom: 20px;">
+                    <img class="card-img-top" src="/<%= cp.image %>" alt="Card image"
+                        style="width:250px; height: 250px; margin-bottom: 20px;">
 
                     <div class="form-group text-center">
 
-                        <input type="hidden" name="noPaslon" value="<%= cp.no_cp %>">
+                        <input type="hidden" name="noPaslon" value="<%= cp.no_paslon %>">
 
                         <button type="submit" class="btn btn-blue btn-block"
                             style="margin-bottom: 10px;"><%= cp.name %></button>
 
-                        <button type="submit" class="btn btn-blue btn-block">Visi Misi</button>
-
+                        <a type="button" data-toggle="modal" data-target="#visiMisiModal<%= cp.NIM %>"
+                            class="btn btn-blue btn-block" href="#visiMisiModal<%= cp.NIM %>">Visi Misi</a>
                     </div>
 
                 </form>
@@ -40,5 +40,36 @@
     </div>
 
 </section>
+
+<!-- Modal -->
+<% for(let cp of calon) { %>
+<div class="modal fade" id="visiMisiModal<%= cp.NIM %>" tabindex="-1" role="dialog" aria-labelledby="visiMisiModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Visi Misi <%= cp.name %></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h4>Visi</h4>
+                <p style="margin-left: 40px;"><%= cp.visi %></p>
+                <hr>
+                <h4>Misi</h4>
+                <ol>
+                    <% for(let m of cp.misi){ %>
+                    <li><%= m %></li>
+                    <% } %>
+                </ol>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<% } %>
 
 <%- include('../includes/footer.ejs') %>

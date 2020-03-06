@@ -1,19 +1,19 @@
-const Sequelize = require('sequelize');
+// const Sequelize = require('sequelize');
 
-const sequelize = require('../util/database');
+// const sequelize = require('../util/database');
 
 
-const CandidatePair = sequelize.define('CandidatePair', {
-    no_cp: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        primaryKey: true
-    },
-    count: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    }
-});
+// const CandidatePair = sequelize.define('CandidatePair', {
+//     no_cp: {
+//         type: Sequelize.INTEGER,
+//         allowNull: false,
+//         primaryKey: true
+//     },
+//     count: {
+//         type: Sequelize.INTEGER,
+//         allowNull: false,
+//         defaultValue: 0
+//     }
+// });
 
-module.exports = CandidatePair;
+// module.exports = CandidatePair;

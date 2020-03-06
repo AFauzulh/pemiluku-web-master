@@ -13,6 +13,19 @@ const Candidate = sequelize.define('Candidate', {
         type: Sequelize.STRING,
         allowNull: false
     },
+    no_paslon: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    count: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0
+    },
+    image: {
+        type: Sequelize.STRING,
+        allowNull: false
+    }
 });
 
 module.exports = Candidate;

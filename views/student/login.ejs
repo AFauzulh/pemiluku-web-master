@@ -182,6 +182,13 @@
                 <div class="col-md-5 col-md-offset-1">
 
                     <form class="signup-form" action="/student/postLogin" method="POST">
+                        <div class="form-group">
+                            <% if(error) { %>
+                            <div class="alert alert-danger text-center" role="alert">
+                                <%= message; %>
+                            </div>
+                            <% } %>
+                        </div>
 
                         <h2 class="text-center">Vote !!</h2>
 

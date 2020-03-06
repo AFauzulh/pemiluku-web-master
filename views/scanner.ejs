@@ -1,8 +1,26 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
 
 <head>
-    <title>Validator</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Landing PAGE Html5 Template">
+
+    <meta name="keywords" content="landing,startup,flat">
+
+    <meta name="author" content="Made By GN DESIGNS">
+
+
+
+    <title>PEMILWA - INFORMATIKA</title>
+
+
 
     <!-- // PLUGINS (css files) // -->
 
@@ -35,6 +53,7 @@
 
     <link href="/assets/css/main.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="/css/semantic.css">
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -54,11 +73,88 @@
 
 <body>
 
-    <div class="ui container">
-        <div class="ui centered card">
-            <video id="preview"></video>
+    <div class="page-preloader">
+
+        <div class="spinner">
+
+            <div class="rect1"></div>
+
+            <div class="rect2"></div>
+
+            <div class="rect3"></div>
+
+            <div class="rect4"></div>
+
+            <div class="rect5"></div>
+
         </div>
+
     </div>
+
+    <nav class="navbar navbar-default navbar-fixed white no-background bootsnav navbar-scrollspy"
+        data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+
+        <div class="container">
+
+            <!-- Start Header Navigation -->
+
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+
+                    <i class="fa fa-bars"></i>
+
+                </button>
+
+                <a class="navbar-brand" href="#brand">
+                    <div class="row">
+                        <img src="/assets/img/hmif.png" class="logo" alt="logo">
+                        <img style="margin-left: 10px;" src="/assets/img/tif.png" width=1000px class="logo2" alt="logo">
+                    </div>
+                </a>
+
+            </div>
+
+            <!-- End Header Navigation -->
+
+
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+
+            <div class="collapse navbar-collapse" id="navbar-menu">
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li><a href="/admin/dashboard">Beranda</a></li>
+
+                    <li><a href="/admin/register-candidate">Register Calon</a></li>
+
+                    <li><a href="/scanner">QR Scanner</a></li>
+
+                    <li><a href="/admin/chart">Grafik</a></li>
+
+                    <li><a href="/admin/postLogoutAdmin">Logout</a></li>
+
+                </ul>
+
+            </div>
+
+            <!-- /.navbar-collapse -->
+
+        </div>
+
+    </nav>
+    <section id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3" style="background-color: white;">
+                    <figure class="figure">
+                        <video class="col-md-10 col-md-offset-1" id="preview"></video>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script src="/js/semantic.js"></script>
     <script type="text/javascript">
@@ -103,6 +199,147 @@
             console.error(e);
         });
     </script>
+    </section>
+    <!--======================================== 
+
+           Contact
+
+    ========================================-->
+
+
+
+    <section id="contact" class="section-padding">
+
+        <div class="container">
+
+            <h2>Contact Us</h2>
+
+        </div>
+
+        <!-- Contact Info -->
+
+        <div class="container contact-info">
+
+            <div class="row">
+
+                <div class="col-md-4">
+
+                    <div class="icon-box">
+
+                        <i class="material-icons">place</i>
+
+                        <h4>Address</h4>
+
+                        <p>Gedung D1.1 FILKOM Universitas Brawijaya <br>
+                            Jl. Veteran No. 8 <br>
+                            Malang 65145, <br>
+                            Indonesia</p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="icon-box">
+
+                        <i class="material-icons">phone</i>
+
+                        <h4>Call Us On</h4>
+
+                        <p>Sekretariat Himpunan Mahasiswa Informatika</p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="icon-box">
+
+                        <i class="material-icons">email</i>
+
+                        <h4>Email us on</h4>
+
+                        <p>hmif.filkomub@gmail.com</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!--======================================== 
+
+           Footer
+
+    ========================================-->
+
+
+    <footer>
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="footer-caption">
+
+                    <img src="/assets/img/hmif.png" class="img-responsive center-block" alt="logo">
+
+
+                    <hr>
+
+                    <h5 class="pull-left">Vortex, &copy;2016 All rights reserved</h5>
+
+                    <ul class="liste-unstyled pull-right">
+
+                        <li><a href="#facebook"><i class="fa fa-facebook"></i></a></li>
+
+                        <li><a href="#twitter"><i class="fa fa-twitter"></i></a></li>
+
+                        <li><a href="#linkedin"><i class="fa fa-linkedin"></i></a></li>
+
+                        <li><a href="#instagram"><i class="fa fa-instagram"></i></a></li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+    <script src="/assets/bootstrap-3.3.7/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+    <script src="/assets/js/plugins/owl-carousel/owl.carousel.min.js"></script>
+
+    <script src="/assets/js/plugins/bootsnav_files/js/bootsnav.js"></script>
+
+    <script src="/assets/js/plugins/typed.js-master/typed.js-master/dist/typed.min.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+
+    <script src="/assets/js/plugins/Magnific-Popup-master/Magnific-Popup-master/dist/jquery.magnific-popup.js"></script>
+
+    <!--<script src="assets/js/plugins/particles.js-master/particles.js-master/particles.min.js"></script> -->
+
+    <script src="assets/js/particales-script.js"></script>
+
+    <script src="/assets/js/main.js"></script>
+
 </body>
 
 </html>

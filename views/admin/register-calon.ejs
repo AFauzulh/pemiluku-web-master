@@ -1,0 +1,68 @@
+<%- include('../includes/adminHeader.ejs') %>
+
+<!--//** Banner**//-->
+<section id="home">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div id="particles-js"></div>
+
+            <!-- Kotak -->
+
+            <div class="col-md-6 col-md-offset-3">
+
+                <form class="signup-form" action="/admin/register-candidate" method="POST"
+                    enctype="multipart/form-data">
+                    <div class="form-group text-center">
+                        <% if(error) { %>
+                        <div class="alert alert-danger" role="alert">
+                            <%= message %>
+                        </div>
+                        <% } %>
+                    </div>
+                    <p class="h3 mb-4 text-center">Form Registrasi Calon Ketua Himpunan</p><br>
+                    <div class="form-group">
+                        <label for="nim">NIM</label>
+                        <input type="text" class="form-control" id="nim" name="nim" placeholder="Masukkan NIM Calon"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nama">Nama</label>
+                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Calon"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="noPaslon">Nomor Urut Calon</label>
+                        <input type="number" class="form-control" id="no_paslon" name="no_paslon"
+                            placeholder="Nomor Urut" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="misi">Visi</label>
+                        <input type="text" class="form-control" id="visi" name="visi" placeholder="Visi Calon" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="misi">Misi</label>
+                        <textarea class="form-control" name="misi" id="misi" rows="3"
+                            placeholder="Misi Calon"></textarea>
+                        <small id="passwordHelpInline" class="text-danger">
+                            *Diisi secara urut tanpa nomor. Jika ada banyak misi, pisahkan dengan baris baru
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="fotoCalon">Upload Foto</label>
+                        <input type="file" class="form-control-file" name="image" id="image" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<%- include('../includes/footer.ejs') %>

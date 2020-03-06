@@ -18,7 +18,7 @@
 
 
 
-    <title>PEMILU - INDONESIA</title>
+    <title>PEMILWA - INFORMATIKA</title>
 
 
 
@@ -110,53 +110,43 @@
 
     <section id="home">
 
-        <div class="ui container">
+        <div class="container">
 
             <div class="row">
 
                 <div id="particles-js"></div>
 
-                <!-- Introduction -->
+                <!-- Kotak 1 -->
 
-                <!-- Sign Up -->
+                <div class="col-md-4 col-md-offset-4">
 
-                <div class="ui column centered grid">
-                    <div class="six wide column">
-                        <% if(error) { %>
-                        <div class="alert alert-danger text-center" role="alert">
-                            <%= message; %>
+                    <form class="signup-form" method="POST" action="/admin/postLoginAdmin">
+
+                        <h2 class="text-center">Login Admin</h2>
+
+                        <hr>
+
+                        <div class="form-group">
+
+                            <input type="text" name="nim" class="form-control" placeholder="NIM" required="required">
+
                         </div>
-                        <% } %>
 
-                        <form class="signup-form" method="POST" action="/admin/postLoginAdmin">
+                        <div class="form-group">
 
-                            <h2 class="text-center">Login Admin</h2>
+                            <input type="password" name="password" class="form-control" placeholder="Password"
+                                required="required">
 
-                            <hr>
+                        </div>
 
-                            <div class="form-group">
+                        <div class="form-group text-center">
 
-                                <input type="text" name="nim" class="form-control" placeholder="NIM"
-                                    required="required">
+                            <button type="submit" class="btn btn-blue btn-block">Login</button>
 
-                            </div>
+                        </div>
 
-                            <div class="form-group">
+                    </form>
 
-                                <input type="password" name="password" class="form-control" placeholder="Password"
-                                    required="required">
-
-                            </div>
-
-                            <div class="form-group text-center">
-
-                                <button type="submit" class="btn btn-blue btn-block">Login</button>
-
-                            </div>
-
-                        </form>
-
-                    </div>
                 </div>
 
             </div>
