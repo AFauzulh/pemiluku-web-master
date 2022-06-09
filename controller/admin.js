@@ -18,11 +18,11 @@ exports.postLoginAdmin = (req, res) => {
     } = req.body;
 
     Admin.findOne({
-            where: {
-                nim: nim,
-                password: password
-            }
-        })
+        where: {
+            nim: nim,
+            password: password
+        }
+    })
         .then(admin => {
             if (admin) {
                 req.session.admin = admin;
@@ -80,8 +80,8 @@ exports.getGrafik = async (req, res) => {
     try {
         const candidates = await sequelize.query(
             'SELECT * FROM Candidates', {
-                type: sequelize.QueryTypes.SELECT
-            }
+            type: sequelize.QueryTypes.SELECT
+        }
         );
         res.render('admin/chart', {
             paslon: candidates
