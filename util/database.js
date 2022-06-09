@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
 
-const sequelize = new Sequelize('db-pemiluku', 'root', "require('firs')", {
+const sequelize = new Sequelize('db-pemiluku', 'root', "", {
     dialect: 'mysql',
     host: 'localhost'
 })

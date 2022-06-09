@@ -26,7 +26,11 @@ exports.postLoginAdmin = (req, res) => {
         .then(admin => {
             if (admin) {
                 req.session.admin = admin;
-                res.redirect('/admin/dashboard');
+                res.render('admin/adminDashboard', {
+                    admin: req.session.admin,
+                    message: false,
+                    error: false
+                });
             } else {
                 res.render('admin/login', {
                     message: 'NIM atau Password Salah !',
@@ -75,7 +79,7 @@ exports.postLogoutAdmin = async (req, res) => {
 exports.getGrafik = async (req, res) => {
     try {
         const candidates = await sequelize.query(
-            'SELECT * FROM candidates', {
+            'SELECT * FROM Candidates', {
                 type: sequelize.QueryTypes.SELECT
             }
         );
@@ -125,26 +129,25 @@ exports.postAddCalon = async (req, res) => {
                 CandidateNIM: candidateNIM
             });
             if (visiCandidate) {
+
                 misi.map(async (m) => {
                     const misi = await Misi.create({
                         misi: m,
                         CandidateNIM: candidateNIM
                     });
-                })
+                });
+
                 res.render('admin/adminDashboard', {
+                    admin: req.session.admin,
                     message: 'Penambahan Data Calon Berhasil',
-                    error: false
+                    error: true
                 });
             } else {
                 res.render('admin/register-calon', {
-                    message: 'Penambahan Gagal !',
+                    message: 'Penambahan (Visi) Gagal !',
                     error: true
                 });
             }
-            res.render('admin/adminDashboard', {
-                message: 'Penambahan Data Calon Berhasil',
-                error: false
-            });
         } else {
             res.render('admin/register-calon', {
                 message: 'Penambahan Gagal !',

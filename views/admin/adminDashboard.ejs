@@ -1,6 +1,37 @@
 <%- include('../includes/adminHeader.ejs') %>
 
 <section id="home">
+    <div class="container">
+
+        <div class="row">
+
+            <div id="particles-js"></div>
+
+            <!-- Kotak 1 -->
+
+            <div class="col-md-6 col-md-offset-3">
+
+                <div class="signup-form">
+                    <h4 class="text-center">Hai admin <%= admin.name %> !</h4>
+                    <p style="text-indent: 40px; text-align: justify;">
+                        Selamat datang di halaman admin dan selamat menjalankan tugas... have a nice day &#128522
+                    </p>
+                </div>
+                <br>
+                <div class="signup-form">
+                    <h5 class="text-center">Notifikasi</h5>
+                    <% if(error) { %>
+                    <div class="alert alert-danger text-center" role="alert">
+                        <%= message; %>
+                    </div>
+                    <% } %>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 

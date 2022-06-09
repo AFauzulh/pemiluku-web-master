@@ -35,41 +35,46 @@ exports.getPilih = async (req, res) => {
                 error: true,
                 message: 'Anda Telah Memilih',
             });
-        }
-        const candidates = await sequelize.query(
-            'SELECT * FROM candidates ORDER BY no_paslon ASC', {
+        } else {
+            const candidates = await sequelize.query(
+                'SELECT * FROM Candidates ORDER BY no_paslon ASC', {
                 type: sequelize.QueryTypes.SELECT
             });
 
-        const visi = await sequelize.query('SELECT * FROM visi', {
-            type: sequelize.QueryTypes.SELECT
-        });
+            const visi = await sequelize.query('SELECT * FROM Visi', {
+                type: sequelize.QueryTypes.SELECT
+            });
 
-        const misi = await sequelize.query('SELECT * FROM misi', {
-            type: sequelize.QueryTypes.SELECT
-        });
+            const misi = await sequelize.query('SELECT * FROM Misi', {
+                type: sequelize.QueryTypes.SELECT
+            });
 
-        let i = 0;
+            let i = 0;
 
-        candidates.map((c) => {
-            c.visi = visi[i].visi
-            c.misi = [];
-            i++;
-        });
+            candidates.map((c) => {
+                c.visi = visi[i].visi
+                c.misi = [];
+                i++;
+            });
 
-        for (let j = 0; j < i; j++) {
-            misi.map((m) => {
-                if (candidates[j].NIM === m.CandidateNIM) {
-                    candidates[j].misi.push(m.misi);
-                }
-            })
+            for (let j = 0; j < i; j++) {
+                misi.map((m) => {
+                    if (candidates[j].NIM === m.CandidateNIM) {
+                        candidates[j].misi.push(m.misi);
+                    }
+                })
+            }
+            res.render('student/pilih', {
+                calon: candidates
+            });
         }
-
-        res.render('student/pilih', {
-            calon: candidates
-        });
     } catch (error) {
         console.log(error);
+        res.render('student/dashboard', {
+            student: req.session.student,
+            error: true,
+            message: 'Tidak Ada Event Pemilihan Saat ini',
+        });
     }
 };
 
@@ -81,15 +86,15 @@ exports.postLogin = async (req, res) => {
     } = req.body;
 
     Student.findOne({
-            where: {
-                name: nama,
-                nim: nim,
-                token: token
-            }
-        })
+        where: {
+            name: nama,
+            nim: nim,
+            token: token
+        }
+    })
         .then(async (student) => {
             if (student) {
-                const jurusan = await sequelize.query(`SELECT * FROM jurusan WHERE id=${student.JurusanId}`, {
+                const jurusan = await sequelize.query(`SELECT * FROM Jurusan WHERE id=${student.JurusanId}`, {
                     type: sequelize.QueryTypes.SELECT
                 });
 
@@ -110,6 +115,7 @@ exports.postLogin = async (req, res) => {
             }
         })
         .catch(err => {
+            console.log(err);
             res.render('student/login', {
                 message: 'Database Error!',
                 error: true

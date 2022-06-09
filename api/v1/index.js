@@ -62,7 +62,7 @@ exports.registerToken = async (req, res) => {
 exports.getPaslonData = async (req, res) => {
     try {
         const candidates = await sequelize.query(
-            'SELECT * FROM candidates', {
+            'SELECT * FROM Candidates', {
                 type: sequelize.QueryTypes.SELECT
             }
         );
